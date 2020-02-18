@@ -35,10 +35,12 @@ class HomeController extends Controller
      * @param  [type] $q [description]
      * @return [type]    [description]
      */
-    public function searchVideo($q)
+    public function searchVideo(Request $request)
     {
+    	$q = $request->input('q');
+
     	$result = $this->youtubeService->listSearch($q);
 
-    	return view('app.home');
+    	return response()->json($result);
     }
 }

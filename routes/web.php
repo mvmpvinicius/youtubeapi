@@ -16,3 +16,5 @@
 // });
 
 Route::get('/', 'HomeController@index')->name('home');
+
+Route::post('/searchVideo', 'HomeController@searchVideo');

@@ -8,6 +8,13 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+window.axios = require('axios');
+window.VueAxios = require('vue-axios');
+
+window.Vue.use(window.VueAxios, window.axios);
+
+window.Vue.prototype.$http = window.axios;
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
