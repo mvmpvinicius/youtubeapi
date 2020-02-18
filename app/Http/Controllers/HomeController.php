@@ -31,10 +31,14 @@ class HomeController extends Controller
     }
 
     /**
-     * @return [type] [description]
+     * [searchVideo description]
+     * @param  [type] $q [description]
+     * @return [type]    [description]
      */
-    public function searchVideo()
+    public function searchVideo($q)
     {
-    	//
+    	$result = $this->youtubeService->listSearch($q);
+
+    	return view('app.home');
     }
 }

@@ -13,10 +13,11 @@
         <style></style>
     </head>
     <body>
-        <div class="container page">
+        <div id="app">
             <div class="content">
                 @yield('content')
             </div>
         </div>
+        <script type="text/javascript" src="js/app.js"></script>
     </body>
 </html>
