@@ -50,6 +50,7 @@
         mounted() {},
         methods: {
             searchVideo: function () {
+                if (!this.search) return false
                 const url = '/searchVideo'
                 this.$http.post(url, {
                     q: this.search

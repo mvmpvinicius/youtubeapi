@@ -5,25 +5,22 @@ namespace App\Services;
 class YoutubeService
 {
 	/**
-	 * [$youtube_api_key description]
-	 * @var [type]
+	 * @var String
 	 */
 	private $youtube_api_key;
 
 	/**
-	 * [$max_results description]
-	 * @var [type]
+	 * @var Integer
 	 */
-	private $max_results = 5;
+	private $max_results = 25;
 
 	/**
-	 * [$youtube_service description]
-	 * @var [type]
+	 * @var GoogleServiceYoutube
 	 */
 	private $youtube_service;
 	
 	/**
-	 * [__construct description]
+	 * [Setup YouTube config]
 	 */
 	public function __construct()
 	{
@@ -38,18 +35,26 @@ class YoutubeService
 	}
 
 	/**
-	 * [listSearch description]
-	 * @param  [type] $q [description]
-	 * @return [type]    [description]
+	 * [Make a search according to the word sent]
+	 * @param  String $q 	 [Search for a word]
+	 * @return JsonObject    [Result List]
 	 */
 	public function listSearch($q)
 	{
+		// Set query parameters
 		$queryParams = [
 			'maxResults' => $this->max_results,
 			'q' => $q
 		];
 
-		$response = $this->youtube_service->search->listSearch('snippet', $queryParams);
+		// Try to get a list of videos from YouTube API
+		try {
+			$response = $this->youtube_service->search->listSearch('snippet', $queryParams);
+		} catch (\Google_Service_Exception $e) {
+            die($e->getMessage());
+        } catch (\Google_Exception $e) {
+            die($e->getMessage());
+        }
 
 		return $response;
 	}

@@ -1994,6 +1994,7 @@ __webpack_require__.r(__webpack_exports__);
     searchVideo: function searchVideo() {
       var _this = this;
 
+      if (!this.search) return false;
       var url = '/searchVideo';
       this.$http.post(url, {
         q: this.search

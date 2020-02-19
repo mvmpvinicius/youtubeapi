@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Validator;
 use App\Services\YoutubeService;
 
 class HomeController extends Controller
@@ -14,7 +14,6 @@ class HomeController extends Controller
 	private $youtubeService;
 
 	/**
-	 * ---
 	 * @param YoutubeService $youtubeService
 	 */
 	public function __construct(YoutubeService $youtubeService)
@@ -31,12 +30,20 @@ class HomeController extends Controller
     }
 
     /**
-     * [searchVideo description]
-     * @param  [type] $q [description]
-     * @return [type]    [description]
+     * [Retrieve a list of videos from YouTube]
+     * @param  \Illuminate\Http\Request  $request
+     * @return JsonObject           	 [Result List]
      */
     public function searchVideo(Request $request)
     {
+        $validate = Validator::make($request->all(), [
+            'q' => 'required'
+        ]);
+        
+        if ($validate->fails()) {
+            return $validate->errors();
+        }
+
     	$q = $request->input('q');
 
     	$result = $this->youtubeService->listSearch($q);
