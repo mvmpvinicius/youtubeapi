@@ -2,14 +2,14 @@
 
 
 ### Modified files
-app/Http/Controllers/HomeController.php
-app/Services/YoutubeService.php
-config/app.php
-resources/js/components/SearchBoxComponent.vue
-resources/js/app.js
-resources/views/app/home.blade.php
-resources/views/layouts/app.blade.php
-routes/web.php
+* app/Http/Controllers/HomeController.php
+* app/Services/YoutubeService.php
+* config/app.php
+* resources/js/components/SearchBoxComponent.vue
+* resources/js/app.js
+* resources/views/app/home.blade.php
+* resources/views/layouts/app.blade.php
+* routes/web.php
 
 ## Installation
 
